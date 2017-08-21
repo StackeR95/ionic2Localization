@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+{{'IonTitle'|translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item-group radio-group [(ngModel)]="selectedLanguage"> <!--ion item group To divide groups of items, use <ion-item-group> the attribute to deal with them is selectedLanguage to be used in home.ts -->
+    <ion-list-header  color="danger"> 
+      {{'select'| translate}} <!-- translate is the object we created in the constructor in home.ts to use it here ,, select is the variable in the .json file that will appear here   -->
+     </ion-list-header>
+       <ion-item *ngFor="let lang of languages"  > <!-- *ngFor it's a way to make a for loop on object  -->
+           <ion-label>{{lang.name}}</ion-label> <!-- .name and .code came from the Constants.ts and Home.ts as we made a JSON called AvailableLanguages and used it in home.ts to bind it here -->
+          <ion-radio   (click)="ChooseLanguage()" [value]="lang.code"></ion-radio>
+        </ion-item>
+    </ion-item-group>
+    <ion-card>
+      <ion-card-content>
+        {{'paragraph'|translate}}
+      </ion-card-content>
+    </ion-card>
+</ion-content>
